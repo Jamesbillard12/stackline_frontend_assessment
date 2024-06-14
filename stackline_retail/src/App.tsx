@@ -18,7 +18,7 @@ function App() {
         </header>
 
         <div className="container mx-auto flex mt-20 h-screen">
-            <aside className="w-1/4 bg-white">
+            <aside className="w-1/4 bg-white shadow-md">
                 <div className="rounded-lg mb-6 p-6 flex flex-col items-center justify-center shadow-sm">
                     <img src="https://images-na.ssl-images-amazon.com/images/I/51h-a5IaHeL.jpg" alt="Product Image"
                          className="w-1/2 mb-4"/>
@@ -28,10 +28,10 @@ function App() {
                 </div>
                 <div className="shadow-sm">
                     <div className="flex flex-wrap gap-2 shadow-sm p-6 pt-0">
-                        <span className="bg-gray-200 text-gray-800 px-3 py-1 rounded-sm text-xs shadow-sm">Pantry</span>
-                        <span className="bg-gray-200 text-gray-800 px-3 py-1 rounded-sm text-xs shadow-sm">Obsolete</span>
-                        <span className="bg-gray-200 text-gray-800 px-3 py-1 rounded-sm text-xs shadow-sm">Blender</span>
-                        <span className="bg-gray-200 text-gray-800 px-3 py-1 rounded-sm text-xs shadow-sm">Lightning Deal</span>
+                        <span className="bg-gray-200 text-gray-800 px-6 py-1 rounded-sm text-xs shadow-sm">Pantry</span>
+                        <span className="bg-gray-200 text-gray-800 px-6 py-1 rounded-sm text-xs shadow-sm">Obsolete</span>
+                        <span className="bg-gray-200 text-gray-800 px-6 py-1 rounded-sm text-xs shadow-sm">Blender</span>
+                        <span className="bg-gray-200 text-gray-800 px-6 py-1 rounded-sm text-xs shadow-sm">Lightning Deal</span>
                     </div>
                 </div>
             </aside>
