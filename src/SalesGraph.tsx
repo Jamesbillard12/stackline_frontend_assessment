@@ -1,10 +1,22 @@
 import React from 'react';
 import { LineChart, Line, XAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+import { RootState } from './store/store';
+
+// interface GraphData {
+//     month: string;
+//     totalRetailSales: number;
+//     totalRetailSalesStr: string;
+//     totalWholesaleSales: number;
+//     totalWholesaleSalesStr: string;
+//     totalUnitsSold: number;
+//     totalRetailerMargin: number;
+//     totalRetailerMarginStr: string;
+// }
 
 const SalesGraph: React.FC = () => {
-    // @ts-ignore
-    const { graphData } = useSelector((state) => state.data);
+    const graphData = useSelector((state: RootState) => state.data.graphData);
+
     return (
         <ResponsiveContainer width="100%" height={300}>
             <LineChart data={graphData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
