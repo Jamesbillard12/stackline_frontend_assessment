@@ -1,10 +1,27 @@
-export const dateFormatter = (date) => {
+// Define the types for sales data and the structure of the totals
+interface Sale {
+    weekEnding: string;
+    retailSales: number;
+    wholesaleSales: number;
+    unitsSold: number;
+    retailerMargin: number;
+}
+
+interface Totals {
+    totalRetailSales: number;
+    totalWholesaleSales: number;
+    totalUnitsSold: number;
+    totalRetailerMargin: number;
+}
+
+// Formatter functions with type annotations
+export const dateFormatter = (date: string): string => {
     const [year, month, day] = date.split('-');
     const shortYear = year.slice(2);
     return `${month}-${day}-${shortYear}`;
 };
 
-export const formatMoney = (amount) => {
+export const formatMoney = (amount: number): string => {
     if (isNaN(amount)) {
         throw new Error('Invalid number');
     }
@@ -17,10 +34,12 @@ export const formatMoney = (amount) => {
     }).format(amount);
 };
 
-export const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+// Month names as a constant array
+export const monthNames: string[] = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-export const getTotalSalesByMonth = (sales, monthShortName) => {
-    const monthIndex = monthNames.indexOf(monthShortName); // Get the month index (0-based)
+// Function to calculate total sales by month
+export const getTotalSalesByMonth = (sales: Sale[], monthShortName: string): Totals => {
+    const monthIndex = monthNames.indexOf(monthShortName);
 
     if (monthIndex === -1) {
         throw new Error(`Invalid month short name: ${monthShortName}`);
@@ -32,7 +51,7 @@ export const getTotalSalesByMonth = (sales, monthShortName) => {
     let totalRetailerMargin = 0;
 
     sales.forEach(sale => {
-        const saleDate = new Date(sale.weekEnding + 'T00:00:00Z'); // Ensures date is parsed as UTC
+        const saleDate = new Date(sale.weekEnding + 'T00:00:00Z');
         if (saleDate.getUTCMonth() === monthIndex) {
             totalRetailSales += sale.retailSales;
             totalWholesaleSales += sale.wholesaleSales;
@@ -49,7 +68,8 @@ export const getTotalSalesByMonth = (sales, monthShortName) => {
     };
 };
 
-export const getGraphData = (sales) => {
+// Function to get graph data based on sales
+export const getGraphData = (sales: Sale[]) => {
     const graphData = monthNames.map(monthShortName => {
         const totals = getTotalSalesByMonth(sales, monthShortName);
         return {

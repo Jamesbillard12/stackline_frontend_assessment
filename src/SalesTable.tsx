@@ -2,14 +2,16 @@ import React from 'react';
 // @ts-ignore
 import { useTable, useSortBy, Column, TableInstance, HeaderGroup, Row, Cell } from 'react-table';
 import 'tailwindcss/tailwind.css';
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
+import { RootState } from './store/store';
 
 interface Data {
     weekEnding: string;
-    retailSales: string;
-    wholesaleSales: string;
+    formattedDate: string;
+    retailSalesStr: string;
+    wholesaleSalesStr: string;
     unitsSold: number;
-    retailerMargin: string;
+    retailerMarginStr: string;
 }
 
 const columns: Column<Data>[] = [
@@ -21,8 +23,8 @@ const columns: Column<Data>[] = [
 ];
 
 const SalesTable: React.FC = () => {
-    // @ts-ignore
-    const { data } = useSelector((state) => state.data);
+    const data = useSelector((state: RootState) => state.data.data.sales);
+
     const {
         getTableProps,
         getTableBodyProps,
@@ -30,8 +32,8 @@ const SalesTable: React.FC = () => {
         rows,
         prepareRow,
     }: TableInstance<Data> = useTable(
-        { columns, data: data.sales },
-        useSortBy // Enable sorting
+        { columns, data: data || [] },
+        useSortBy
     );
 
     return (
@@ -47,9 +49,9 @@ const SalesTable: React.FC = () => {
                         >
                             {column.render('Header')}
                             {/* Add sort direction indicator */}
-                            <span className={!column.isSorted ? 'text-grey-arrow': ''}>
-                  {column.isSorted ? (column.isSortedDesc ? ' ▼' : ' ▲') : ' ▼'}
-                </span>
+                            <span className={!column.isSorted ? 'text-grey-arrow' : ''}>
+                                    {column.isSorted ? (column.isSortedDesc ? ' ▼' : ' ▲') : ' ▼'}
+                                </span>
                         </th>
                     ))}
                 </tr>
@@ -61,7 +63,11 @@ const SalesTable: React.FC = () => {
                 return (
                     <tr {...row.getRowProps()} key={row.id + row.index}>
                         {row.cells.map((cell: Cell<Data>) => (
-                            <td {...cell.getCellProps()} className="border-t-2 border-grey-background px-4 py-2 text-sm text-grey-text" key={cell.column.id}>
+                            <td
+                                {...cell.getCellProps()}
+                                className="border-t-2 border-grey-background px-4 py-2 text-sm text-grey-text"
+                                key={cell.column.id}
+                            >
                                 {cell.render('Cell')}
                             </td>
                         ))}
