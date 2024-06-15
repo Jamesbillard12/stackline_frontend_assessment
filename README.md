@@ -10,11 +10,8 @@ This application is a sales dashboard that visualizes retail and wholesale sales
 
 - **recharts**: For rendering the sales graph.
 - **react-table**: For creating and managing the sales table.
+- **Tailwind CSS**: For styling the user interface.
 - **TypeScript**: For adding type safety to the codebase.
-
-## Deployed Application
-
-You can view the deployed application at: [https://666dc81a148c0e0008b54057--james-billard-stackline-assessment.netlify.app/](https://666dc81a148c0e0008b54057--james-billard-stackline-assessment.netlify.app/)
 
 ## Available Scripts
 
@@ -50,3 +47,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+## Deployed Application
+
+You can view the deployed application at: [https://666dc81a148c0e0008b54057--james-billard-stackline-assessment.netlify.app/](https://666dc81a148c0e0008b54057--james-billard-stackline-assessment.netlify.app/)
