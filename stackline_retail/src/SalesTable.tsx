@@ -2,6 +2,7 @@ import React from 'react';
 // @ts-ignore
 import { useTable, useSortBy, Column, TableInstance, HeaderGroup, Row, Cell } from 'react-table';
 import 'tailwindcss/tailwind.css';
+import { useSelector } from "react-redux";
 
 interface Data {
     weekEnding: string;
@@ -11,21 +12,17 @@ interface Data {
     retailerMargin: string;
 }
 
-const data: Data[] = [
-    { weekEnding: '01-02-16', retailSales: '$348,123', wholesaleSales: '$255,721', unitsSold: 887, retailerMargin: '$123,294' },
-    { weekEnding: '01-09-16', retailSales: '$348,123', wholesaleSales: '$255,721', unitsSold: 887, retailerMargin: '$123,294' },
-    // Add more data as needed
-];
-
 const columns: Column<Data>[] = [
-    { Header: 'Week Ending', accessor: 'weekEnding' },
-    { Header: 'Retail Sales', accessor: 'retailSales' },
-    { Header: 'Wholesale Sales', accessor: 'wholesaleSales' },
+    { Header: 'Week Ending', accessor: 'formattedDate' },
+    { Header: 'Retail Sales', accessor: 'retailSalesStr' },
+    { Header: 'Wholesale Sales', accessor: 'wholesaleSalesStr' },
     { Header: 'Units Sold', accessor: 'unitsSold' },
-    { Header: 'Retailer Margin', accessor: 'retailerMargin' },
+    { Header: 'Retailer Margin', accessor: 'retailerMarginStr' },
 ];
 
 const SalesTable: React.FC = () => {
+    // @ts-ignore
+    const { data } = useSelector((state) => state.data);
     const {
         getTableProps,
         getTableBodyProps,
@@ -33,7 +30,7 @@ const SalesTable: React.FC = () => {
         rows,
         prepareRow,
     }: TableInstance<Data> = useTable(
-        { columns, data },
+        { columns, data: data.sales },
         useSortBy // Enable sorting
     );
 
@@ -62,7 +59,7 @@ const SalesTable: React.FC = () => {
             {rows.map((row: Row<Data>) => {
                 prepareRow(row);
                 return (
-                    <tr {...row.getRowProps()} key={row.id}>
+                    <tr {...row.getRowProps()} key={row.id + row.index}>
                         {row.cells.map((cell: Cell<Data>) => (
                             <td {...cell.getCellProps()} className="border-t-2 border-grey-background px-4 py-2 text-sm text-grey-text" key={cell.column.id}>
                                 {cell.render('Cell')}
