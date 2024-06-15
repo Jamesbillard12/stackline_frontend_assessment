@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This application is a sales dashboard that visualizes retail and wholesale sales data using charts and tables.
 
+## Deployed Application
+
+You can view the deployed application at: [https://666dc81a148c0e0008b54057--james-billard-stackline-assessment.netlify.app/](https://666dc81a148c0e0008b54057--james-billard-stackline-assessment.netlify.app/)
+
 ## Packages Used
 
 - **recharts**: For rendering the sales graph.
@@ -48,6 +52,4 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-## Deployed Application
 
-You can view the deployed application at: [https://666dc81a148c0e0008b54057--james-billard-stackline-assessment.netlify.app/](https://666dc81a148c0e0008b54057--james-billard-stackline-assessment.netlify.app/)
