@@ -34,8 +34,8 @@ function App() {
           <header className="bg-blue-header">
               <div className="container mx-auto px-2 py-4 flex justify-between items-center">
                   <div>
-                      <a href="#" className="flex items-left">
-                          <img src={logo} alt="Logo" className="h-12 w-32 mr-2"/>
+                      <a href="https://www.stackline.com/" className="flex items-left">
+                          <img src={logo} alt="Stackline Logo" className="h-12 w-32 mr-2"/>
                       </a>
                   </div>
               </div>
@@ -44,7 +44,7 @@ function App() {
           <div className="container mx-auto flex mt-20 h-100">
               <aside className="w-1/4 bg-white shadow-md">
                   <div className="rounded-lg mb-6 p-6 flex flex-col items-center justify-center shadow-sm">
-                      <img src="https://images-na.ssl-images-amazon.com/images/I/51h-a5IaHeL.jpg" alt="Product Image"
+                      <img src="https://images-na.ssl-images-amazon.com/images/I/51h-a5IaHeL.jpg" alt="Retail Product"
                            className="w-1/2 mb-4"/>
                       <h2 className="text-lg font-semibold text-gray-800 mb-2">{data.title}</h2>
                       <p className="text-xs text-grey-text mb-1 pl-6 pr-6">{data.subtitle}</p>
